@@ -1,13 +1,17 @@
 class process{
     static json2HTML(schema){
-          var output = document.createElement(schema.tagName);
-          if(schema.attributes){ process.assignAttributes(schema.attributes ,output,"set");}
-          if(schema.innerText){output.appendChild(document.createTextNode(schema.innerText));}
-          if(schema.childNodes){ process.assignChildNodes(schema.childNodes,output,"set");}
+          if(schema.nodeType === 3){
+            var  output = document.createTextNode(schema.textContent);
+            if(schema.childNodes){ process.assignChildNodes(schema.childNodes,output,"set");}
+          }else{
+            var output = document.createElement(schema.tagName);
+            if(schema.attributes){ process.assignAttributes(schema.attributes ,output,"set");}
+            if(schema.childNodes){ process.assignChildNodes(schema.childNodes,output,"set");}
+          }
         return output;
     }
     static assignAttributes(obj,objResponse,operation){
-        if (!obj || obj === undefined) return;
+        if (!obj) return;
         if (!objResponse) { var objResponse = {}; };
         for(var key in obj){
           if(operation === "set")
@@ -24,19 +28,22 @@ class process{
         for(var i = 0;i < child.length;i++){
           if(operation === "set")
             childResponse.appendChild(process.json2HTML(child[i]));
-          if(operation === "get")
-            childResponse.push(process.HTML2json(child[i]));
+          if(operation === "get"){
+            if(child[i].nodeType === Node.TEXT_NODE)
+              childResponse.push(child[i].textContent)
+            else
+              childResponse.push(process.HTML2json(child[i]));
+          }
         }
         return childResponse;
     }
     static HTML2json(nodeE){
-      
-        return {
+        const value = {
           tagName:nodeE.tagName,
           attributes:process.assignAttributes(nodeE.attributes,{},"get"),
           childNodes:process.assignChildNodes(nodeE.childNodes,[],"get"),
-        };
-        
-       
+          nodeType:nodeE.nodeType
+        }
+        return value;   
     }
 }

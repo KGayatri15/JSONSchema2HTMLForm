@@ -3,46 +3,53 @@ const schema ={
     "attributes":{ "name":"json" , "method":"POST","onSUbmit":"return Submit();"},
     "childNodes":[  
         {
-          "tagName":"label","innerText":"Email",
-          "attributes":{"for":"Email"}
+          "tagName":"label",
+          "attributes":{"for":"Email"},
+          "childNodes":[{ "nodeType":3, "textContent":"Email" }]
         }, 
         {
             "tagName":"input",
             "attributes":{ "type":"email","name":"Email","pattern":"[a-z0-9._%+-]+@[a-z0-9.-]+[a-z]{2,4}$","required":""}
         },
         {
-          "tagName":"label","innerText":"Gender",
-          "attributes":{ "for":"Gender"}
+          "tagName":"label",
+          "attributes":{ "for":"Gender"},
+          "childNodes":[{ "nodeType":3,"textContent":"Gender" }]
         },
         {
          "tagName":"select",
           "attributes":{"name":"Gender","required":"",},
           "childNodes":[
             {
-              "tagName":"option","innerText":"Male",
-              "attributes":{"value":"Male"}
+              "tagName":"option",
+              "attributes":{"value":"Male"},
+              "childNodes":[{ "nodeType":3,"textContent":"Male" }]
             },
             {
-              "tagName":"option","innerText":"Female",
-              "attributes":{ "value":"Female"}
+              "tagName":"option",
+              "attributes":{ "value":"Female"},
+              "childNodes":[{ "nodeType":3,"textContent":"Female" }]
             },
             {
-              "tagName":"option", "innerText":"Others",
-              "attributes":{ "value":"Others"}
+              "tagName":"option",
+              "attributes":{ "value":"Others"},
+              "childNodes":[{ "nodeType":3,"textContent":"Others" }]
             }
           ]
         },
         {
-          "tagName":"label", "innerText":"Magic Number",
-          "attributes":{  "for":"MagicNo"}
+          "tagName":"label",
+          "attributes":{  "for":"MagicNo"},
+          "childNodes":[{  "nodeType":3,  "textContent":"Magic Number" }]
         },
         {
           "tagName":"input",
           "attributes":{"type":"number", "name":"MagicNo", "value":"1","required":"","min":1}
         },
         {
-          "tagName":"label", "innerText":"Password",
-          "attributes":{ "for":"Password"}
+          "tagName":"label",
+          "attributes":{ "for":"Password"},
+          "childNodes":[{ "nodeType":3,"textContent":"Password" }]
         },
         {
           "tagName":"input",
@@ -54,4 +61,6 @@ const schema ={
         }
       ]
 }
+
+
 

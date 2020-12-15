@@ -30,14 +30,13 @@ class process{
         return childResponse;
     }
     static HTML2json(nodeE){
-      if(nodeE.tagName !== undefined){
-        const value = {
+      
+        return {
           tagName:nodeE.tagName,
           attributes:process.assignAttributes(nodeE.attributes,{},"get"),
           childNodes:process.assignChildNodes(nodeE.childNodes,[],"get"),
-        }
-        console.log(value);
-      }
+        };
+        
        
     }
 }

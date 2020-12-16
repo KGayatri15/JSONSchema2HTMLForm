@@ -22,22 +22,24 @@ class process{
         if (!child) return;
         if (!childResponse) { var childResponse = []; };
         for(var i = 0;i < child.length;i++){
-          if(childResponse instanceof HTMLElement)
-            childResponse.appendChild(process.json2HTML(child[i]));
-          else{
-            if(child[i].nodeType === Node.TEXT_NODE)
-                childResponse.push(child[i].textContent);
-            else
-              childResponse.push(process.HTML2json(child[i]));
-          }
+            childResponse = process.setData(child,childResponse,i);
         }
         return childResponse;
     }
     static setData(input,output,key){
+      if(output instanceof Array){
+          if(input[key].nodeType === Node.TEXT_NODE)
+              output.push(input[key].textContent);
+          else
+              output.push(process.HTML2json(input[key]));
+      }
       if(typeof output === 'object'&& input[key].value!== undefined)
           output[input[key].name] = input[key].value;
       if(output instanceof HTMLElement)
-          output.setAttribute(key,input[key]);
+          if(typeof key === 'number')
+             output.appendChild(process.json2HTML(input[key]));
+          else
+            output.setAttribute(key,input[key]);
       return output;
     }
     static HTML2json(nodeE){
@@ -50,3 +52,4 @@ class process{
         return value;   
     }
 }
+ 

@@ -1,4 +1,4 @@
-var form = {
+var UserSignUp = {
   "tagName":"form",
   "name":"json" ,
   "method":"POST",

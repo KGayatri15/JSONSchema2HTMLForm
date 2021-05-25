@@ -2,7 +2,7 @@ var UserProfile = {
     "tagName":"form",
     "name":"json" ,
     "method":"POST",
-    "onSubmit":"return Submit();",
+    "onSubmit":"Submit2();",
     "childNodes":[
            {
              "tagName":"label",

@@ -4,7 +4,13 @@ function start1(){
 function start2(){
     document.getElementById("display2").appendChild(process.json2HTML(UserProfile));
 }
-function Submit(){
-    alert("Registered Successfully !")
-    return true;
+function Submit1(){
+    console.log("Registered Successfully !");
+    document.getElementById("display1").innerHTML = "";
+ //   return true;
+}
+function Submit2(){
+    console.log("Registered Successfully !");
+    document.getElementById("display2").innerHTML = "";
+ //   return true;
 }

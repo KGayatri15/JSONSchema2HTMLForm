@@ -2,7 +2,7 @@ var UserSignUp = {
   "tagName":"form",
   "name":"json" ,
   "method":"POST",
-  "onSubmit":"return Submit();",
+  "onSubmit":"Submit1();",
   "childNodes":[
          {
            "tagName":"label",
@@ -46,4 +46,4 @@ var UserSignUp = {
               "value":"submit",
         }
    ]
- }
+}
